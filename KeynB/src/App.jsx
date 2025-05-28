@@ -11,8 +11,8 @@ import Footer from './components/Footer'; // Corrected import path/name
 // Import your new components
 import Summary from './components/Summary';
 import ExperienceCards from './components/ExperienceCards';
-import ProjectsCards from './components/ProjectCards';
-import Languages from './components/Languages';
+import ProjectsCard from './components/ProjectCard';
+import Skills from './components/Skills';
 import ContactMe from './components/ContactMe';
 import dailyJournalImage from './assets/MyDJapp.png'; // Assuming you put it in src/assets
 
@@ -33,8 +33,8 @@ function App() {
       {/* Add your new sections here */}
       <Summary />
       <ExperienceCards />
-      <ProjectsCards MyDJapp={dailyJournalImage} />
-      <Languages />
+      <ProjectsCard MyDJapp={dailyJournalImage} />
+      <Skills />
       <ContactMe />
       <Footer />
     </>

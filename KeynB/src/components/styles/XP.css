@@ -1,0 +1,41 @@
+.experience-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  line-height: 1.5rem;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+
+.experience-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.experience-card h3 {
+  color: #e2e8f0; /* light gray */
+}
+
+.experience-card p {
+  line-height: 1.6;
+}
+
+.experience-card ul li {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.experience-card ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #7c3aed; /* Tailwind's purple-600 */
+}
