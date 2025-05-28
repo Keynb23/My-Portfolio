@@ -9,6 +9,10 @@ finish nba redesign, add that.
 
 add netflix copy
 
+the background should slightly change or
+have an animation that matches the theme of
+whatever project is there
+
 
 
 todos
