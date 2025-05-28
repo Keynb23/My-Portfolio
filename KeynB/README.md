@@ -1,13 +1,7 @@
-
-
-
-
-
-
-
-
-
-
+create a page that has all of your projects
+like the main page has a couple on display,
+but this page is just all of your projects for 
+people to see 
 
 
 
