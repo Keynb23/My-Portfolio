@@ -3,6 +3,12 @@ like the main page has a couple on display,
 but this page is just all of your projects for 
 people to see 
 
+add snake game and pong game to projects(need screenshots)
+
+finish nba redesign, add that.
+
+add netflix copy
+
 
 
 todos
