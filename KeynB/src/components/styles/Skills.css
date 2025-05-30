@@ -1,283 +1,62 @@
-@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
-@import url('https://fonts.cdnfonts.com/css/poppins');
-
-/* Skills section background - This will be your animated section */
-.Skills-section-bg {
-    position: relative; /* Essential for positioning the ::before and its children */
-    width: 100%; /* Take full width of its parent container */
-    height: 100vh; /* Make this section full viewport height. Adjust this value to control the section's height. */
-    overflow: hidden; /* Crucial: This will hide any overflow from the 3D animation */
-    display: flex; /* Use flexbox to center the banner */
-    justify-content: center;
-    align-items: center;
+/* Full-screen fixed background */
+.skills-parent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Behind all other content */
+  overflow: hidden;
 }
 
-/* Background image using pseudo-element */
-.Skills-section-bg::before {
-    position: absolute;
-    width: min(1400px, 90vw);
-    top: 10%; /* Adjust as needed for positioning within the .Skills-section-bg */
-    left: 50%;
-    height: 90%; /* Adjust height relative to .Skills-section-bg */
-    transform: translateX(-50%);
-    content: '';
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    pointer-events: none; /* Allows clicks to pass through */
-    z-index: 0; /* Place behind other content */
+/* Skills section fills the parent */
+.Skills-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px; /* Space between icons */
 }
 
-/* Banner container for the animation */
-.banner {
-    width: 100%;
-    height: 100%; /* Take full height of Skills-section-bg */
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-    z-index: 1; /* Place above the background pseudo-element */
-    display: flex; /* Use flexbox to center the slider */
-    justify-content: center;
-    align-items: center;
+/* Icon row styling */
+.icon-row {
+  display: flex;
+  width: 100%;
+  max-height: 150px; /* Smaller size for background */
+  opacity: 0.3; /* Low opacity to avoid distraction */
+  transition: transform 0.1s linear; /* Smooth scroll movement */
 }
 
-/* The 3D slider container */
-.banner .slider {
-    position: absolute;
-    width: 250px;
-    height: 300px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) perspective(1000px) rotateX(-16deg);
-    transform-style: preserve-3d;
-    animation: autoRun 20s linear infinite;
-    z-index: 2;
+/* Image styling */
+.icon-row img {
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
 }
 
-/* The animation for continuous rotation of the slider */
-@keyframes autoRun {
-    from {
-        transform: translate(-50%, -50%) perspective(1000px) rotateX(-16deg) rotateY(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) perspective(1000px) rotateX(-16deg) rotateY(360deg);
-    }
+/* Align icons alternately */
+.icon-row[data-direction="left"] {
+  justify-content: flex-start;
+  padding-left: 10%;
 }
 
-/* Individual item in the slider */
-.banner .slider .item {
-    position: absolute;
-    inset: 0 0 0 0; /* Makes each item fill the slider's defined width/height */
-    /* This is the key: Manually setting --position for each child */
-    /* We have 10 items in your JSX. */
-    --quantity: 10; /* Manually set the total quantity of items */
+.icon-row[data-direction="right"] {
+  justify-content: flex-end;
+  padding-right: 10%;
 }
 
-/* Manually set --position for each item using :nth-child */
-.banner .slider .item:nth-child(1) { --position: 1; }
-.banner .slider .item:nth-child(2) { --position: 2; }
-.banner .slider .item:nth-child(3) { --position: 3; }
-.banner .slider .item:nth-child(4) { --position: 4; }
-.banner .slider .item:nth-child(5) { --position: 5; }
-.banner .slider .item:nth-child(6) { --position: 6; }
-.banner .slider .item:nth-child(7) { --position: 7; }
-.banner .slider .item:nth-child(8) { --position: 8; }
-.banner .slider .item:nth-child(9) { --position: 9; }
-.banner .slider .item:nth-child(10) { --position: 10; }
-
-/* Apply the 3D transform to all items */
-.banner .slider .item {
-    transform:
-        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-        translateZ(950px); /* Pushes items forward in 3D space */
+/* Remove previous animations */
+.icon-row.slide-in,
+.icon-row.slide-out {
+  animation: none;
 }
 
-/* Styling for the images within each item */
-.banner .slider .item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images fill their container without distortion */
+/* Remove old keyframes */
+@keyframes slide-in {
+  /* Removed */
 }
-
-/* Removed all .banner .content, h1, author, model styles as requested */
-
-/* Media Queries for responsiveness */
-@media screen and (max-width: 1023px) {
-    .banner .slider {
-        width: 160px;
-        height: 200px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) perspective(1000px) rotateX(-16deg);
-    }
-    .banner .slider .item {
-        transform:
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(300px); /* Adjust depth for smaller screens */
-    }
+@keyframes slide-out {
+  /* Removed */
 }
-
-@media screen and (max-width: 767px) {
-    .banner .slider {
-        width: 100px;
-        height: 150px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) perspective(1000px) rotateX(-16deg);
-    }
-    .banner .slider .item {
-        transform:
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(180px); /* Further adjust depth for mobile */
-    }
-}
-
-
-/* @import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
-@import url('https://fonts.cdnfonts.com/css/poppins');
-
-.Skills-section-bg::before{
-    position: absolute;
-    width: min(1400px, 90vw);
-    top: 10%;
-    left: 50%;
-    height: 90%;
-    transform: translateX(-50%);
-    content: '';
-    background-image: url(assets/gradient.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    pointer-events: none;
-}
-
-.banner{
-    width: 100%;
-    height: 100vh;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-}
-.banner .slider{
-    position: absolute;
-    width: 200px;
-    height: 250px;
-    top: 10%;
-    left: calc(50% - 100px);
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-    animation: autoRun 20s linear infinite;
-    z-index: 2;
-}
-@keyframes autoRun{
-    from{
-        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
-    }to{
-        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
-    }
-}
-
-.banner .slider .item{
-    position: absolute;
-    inset: 0 0 0 0;
-    transform: 
-        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-        translateZ(550px);
-}
-.banner .slider .item img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.banner .content{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1400px, 100vw);
-    height: max-content;
-    padding-bottom: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-}
-.banner .content h1{
-    font-family: 'ICA Rubrik';
-    font-size: 16em;
-    line-height: 1em;
-    color: #25283B;
-    position: relative;
-}
-.banner .content h1::after{
-    position: absolute;
-    inset: 0 0 0 0;
-    content: attr(data-content);
-    z-index: 2;
-    -webkit-text-stroke: 2px #d2d2d2;
-    color: transparent;
-}
-.banner .content .author{
-    font-family: Poppins;
-    text-align: right;
-    max-width: 200px;
-}
-.banner .content h2{
-    font-size: 3em;
-}
-.banner .content .model{
-    background-image: url(images/model.png);
-    width: 100%;
-    height: 75vh;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-size: auto 130%;
-    background-repeat: no-repeat;
-    background-position: top center;
-    z-index: 1;
-}
-@media screen and (max-width: 1023px) {
-    .banner .slider{
-        width: 160px;
-        height: 200px;
-        left: calc(50% - 80px);
-    }
-    .banner .slider .item{
-        transform: 
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(300px);
-    }
-    .banner .content h1{
-        text-align: center;
-        width: 100%;
-        text-shadow: 0 10px 20px #000;
-        font-size: 7em;
-    }
-    .banner .content .author{
-        color: #fff;
-        padding: 20px;
-        text-shadow: 0 10px 20px #000;
-        z-index: 2;
-        max-width: unset;
-        width: 100%;
-        text-align: center;
-        padding: 0 30px;
-    }
-}
-@media screen and (max-width: 767px) {
-    .banner .slider{
-        width: 100px;
-        height: 150px;
-        left: calc(50% - 50px);
-    }
-    .banner .slider .item{
-        transform: 
-            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
-            translateZ(180px);
-    }
-    .banner .content h1{
-        font-size: 5em;
-    }
-} */

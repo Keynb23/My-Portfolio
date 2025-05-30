@@ -2,19 +2,15 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
-
-
-// Import your main page sections
 import { LandingPage } from './LandingPage';
 import Footer from './components/Footer'; // Corrected import path/name
 
 // Import your new components
 import Summary from './components/Summary';
 import ExperienceCards from './components/ExperienceCards';
-import ProjectsCard from './components/ProjectCard';
+import Projects from './components/ProjectCard';
 import Skills from './components/Skills';
 import ContactMe from './components/ContactMe';
-import dailyJournalImage from './assets/MyDJapp.png'; // Assuming you put it in src/assets
 
 
 
@@ -30,11 +26,12 @@ function App() {
     <>
       
       <LandingPage />
-      {/* Add your new sections here */}
       <Summary />
       <ExperienceCards />
-      <ProjectsCard MyDJapp={dailyJournalImage} />
+      <div className="app-container">
       <Skills />
+      <Projects />
+    </div>
       <ContactMe />
       <Footer />
     </>

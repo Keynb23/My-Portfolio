@@ -1,10 +1,9 @@
 import SplineAnimation from './components/SplineAnimation';
-// No need to import AOS or AOS CSS here, as App.jsx handles global AOS initialization
+
 
 export const LandingPage = () => {
   return (
-    <div className="LandingPage"> {/* Consider if you need this div or if it can be a React Fragment */}
-      <img className="image-gradient" src="gradient.png" alt="gradient" />
+    <div className="LandingPage"> 
       <div className="layer-blur"></div>
 
       <div className="container">
@@ -40,8 +39,6 @@ export const LandingPage = () => {
             I made a bold career shift in my mid-20s, starting over to pursue my passion for game development.  
             Though I had dabbled in Python for a few years, I never took it seriously—until one day, I committed.  
             Enrolling in a coding bootcamp marked the beginning of my journey into the worlds of software engineering, web, and game development.  
-
-
             </p>
 
             <div data-aos="fade-zoom-in"
